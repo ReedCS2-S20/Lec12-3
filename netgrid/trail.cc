@@ -56,11 +56,9 @@ bool Turtle::canBuild(void) {
 bool Turtle::canClear(void) {
   char c;
   return 
-    !grid->hasWall(position+direction) &&
+    grid->hasWall(position+direction) &&
     grid->onGrid(position+direction) &&
-    !grid->hasPrize(position+direction) &&
-    prizes > 0 &&
-    !grid->hasTurtle(position+direction,c);
+    prizes > 0;
 }
 
 bool Turtle::build(void) {

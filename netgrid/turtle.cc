@@ -91,6 +91,7 @@ void grid_session(int clientfd, char* host) {
 
     // Output the response to the user.
     fputs(buffer, stdout);
+    fflush(stdout);
 
     line++;
   }

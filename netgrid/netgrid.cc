@@ -47,7 +47,7 @@ void *turtle_session(void *ci) {
   // Get their lines of text and echo them back.
   //
   int recvlen;
-  char buffer[MAXLINE];
+  char* buffer = (char*)malloc(MAXLINE+1);
   if ((recvlen = read(connfd, buffer, MAXLINE)) != 0) {
     printf("Server received %d bytes from #%d: %s",recvlen,id,buffer);
     char namec[20];
@@ -75,6 +75,8 @@ void *turtle_session(void *ci) {
   //
   close(connfd);
 
+  free(buffer);
+  free(client);
   return NULL;
 }
 
