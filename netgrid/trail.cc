@@ -1,6 +1,7 @@
 #include "trail.hh"
 #include <cassert>
 #include <queue>
+#include <algorithm>
 
 Turtle::Turtle(Grid* g, std::string nm, Position p, Direction d) :
   grid      {g},
