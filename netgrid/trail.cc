@@ -369,25 +369,25 @@ std::string Grid::exec(std::string name, std::string command) {
   mutex.lock();
   if (turtles.find(name) != turtles.end()) {
     Turtle* t = turtles[name];
-    if (command == "forward\n") {
+    if (command.substr(0,7) == "forward") {
       t->forward();
-    } else if (command == "left\n") {
+    } else if (command.substr(0,4) == "left") {
       t->left();
-    } else if (command == "right\n") {
+    } else if (command.substr(0,5) == "right") {
       t->right();
-    } else if (command == "on\n") {
+    } else if (command.substr(0,2) == "on") {
       t->trail(true);
-    } else if (command == "off\n") {
+    } else if (command.substr(0,3) == "off") {
       t->trail(false);
-    } else if (command == "build\n") {
+    } else if (command.substr(0,5) == "build") {
       if (!t->build()) {
 	gt = "Can't build. ";
       }
-    } else if (command == "clear\n") {
+    } else if (command.substr(0,5) == "clear") {
       if (!t->clear()) {
 	gt = "Can't clear. ";
       }
-    } else if (command == "who\n") {
+    } else if (command.substr(0,3) == "who") {
       std::vector<std::string> names {};
       for (auto e: turtles) {
 	names.push_back(e.first);
